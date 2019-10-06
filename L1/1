@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+void kgnafunt (double kg){
+    cout<<"podaj wartosc w kg"<<endl;
+    cin>>kg;
+    if(kg<0){
+    do{
+        cout<<"podaj wartosc wieszka lub równą 0"<<endl;
+        cin>>kg;
+    }
+    while(kg<0);
+    }
+        double funt = 2.204;
+        funt *= kg;
+        cout<<"kg "<<kg<<endl;
+        cout<<"funt "<<funt<<endl;
+}
+
+int main()
+{
+    double kg;
+    kgnafunt(kg);
+    return 0;
+
+}
