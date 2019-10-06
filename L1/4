@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+class StaleMatematyczne {
+
+    public:
+        static double wartosc;
+
+    private:
+        void sprawdz(){
+            cout<<"podaj wartosc w kg"<<endl;
+            cin>>wartosc;
+            if(wartosc<0){
+                do{
+                    cout<<"podaj wartosc wieszka lub równą 0"<<endl;
+                    cin>>wartosc;
+                }
+                    while(wartosc<0);
+            }
+        }
+
+        void oblicz()
+        {
+            sprawdz();
+            wartosc *= 2.20462262;
+        }
+
+    public:
+        void wyswietl()
+        {
+            oblicz();
+            cout<<"funt "<<wartosc<<endl;
+        }
+};
+
+double StaleMatematyczne::wartosc;
+
+int main()
+{
+    StaleMatematyczne zadanie;
+    zadanie.wyswietl();
+    return 0;
+}
