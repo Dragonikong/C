@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+class zamiana {
+
+    public:
+        static double kg,funt;
+        static const double przelicz;
+
+    private:
+       static void sprawdz(){
+            cout<<"podaj wartosc w kg"<<endl;
+            cin>>kg;
+            if(kg<0){
+                do{
+                    cout<<"podaj wartosc wieszka lub równą 0"<<endl;
+                    cin>>kg;
+                }
+                    while(kg<0);
+            }
+        }
+
+        static void oblicz()
+        {
+            sprawdz();
+            funt = kg*przelicz;
+        }
+
+    public:
+        static const void wyswietl()
+        {
+            oblicz();
+            cout<<"kg "<<kg<<endl;
+            cout<<"funt "<<funt<<endl;
+        }
+};
+
+double zamiana::kg;
+double zamiana::funt;
+const double zamiana::przelicz = 2.20462262;
+
+int main()
+{
+    zamiana wartosc;
+    wartosc.wyswietl();
+    return 0;
+}
