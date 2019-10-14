@@ -1,0 +1,62 @@
+#include <iostream>
+#include <set>
+#include <string>
+
+using namespace std;
+
+class uczniowie{
+    private:
+        set<string> lista_klasy;
+        set<string>::iterator przez;
+    public:
+        string co;
+        int wybor;
+
+    void menu(){
+    for(;;){
+        cout<<"Menu:\n"<<"1.Dodaj ucznia do listy klasowej\n"<<"2.Usun ucznia z listy klasowej\n"<<"3.Wyswietl liste uczniow\n"<<"4.Wyjscie\n"<<endl;
+        cin>>wybor;
+        cout<<endl;
+        switch(wybor){
+            case 1:
+                cout<<"Podaj Imie ucznia:\n"<<endl;
+                cin>>co;
+                lista_klasy.insert(co);
+                cout<<"Uczen zostal dopisany na liste\n"<<endl;
+            break;
+            case 2:
+                cout<<"Podaj Imie ucznia do wypisania z listy"<<endl;
+                cin>>co;
+                lista_klasy.erase(co);
+                cout<<"Uczen zostal wypisany z listy\n"<<endl;
+            break;
+            case 3:
+                if(lista_klasy.empty()){
+                    cout<<"Lista nie posiada wpisanych uczniow\n"<<endl;
+                }
+                else{
+                    cout<<"Uczniowie na liscie:"<<endl;
+                for(przez=lista_klasy.begin();przez!=lista_klasy.end();przez++){
+                    cout<<*przez<<"\n";
+                    }
+                }
+            break;
+            case 4:
+                exit(0);
+            break;
+            default:
+                cout<<"Prosze podac wartosc od 1 do 4\n"<<endl;
+            break;
+                }
+            }
+    }
+};
+
+
+
+int main()
+{
+    uczniowie klasa;
+    klasa.menu();
+    return 0;
+}
