@@ -1,0 +1,51 @@
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+void menu(int wybor,list<int> lista,list<int>::iterator przez){
+    for(;;){
+    cout<<"Menu:\n"<<"1.Dodaj element na stos\n"<<"2.Usun element ze stosu\n"<<"3.Wyswietl zawartosc stosu\n"<<"4.Wyjscie\n"<<endl;
+    cin>>wybor;
+    cout<<endl;
+    switch(wybor){
+        case 1:
+            cout<<"Podaj wartosc elementu do dodania na szczyt stosu\n"<<endl;
+            int dodaj;
+            cin>>dodaj;
+            lista.push_back(dodaj);
+            cout<<"Element zostal dodany na szczyt stosu\n"<<endl;
+        break;
+        case 2:
+            lista.pop_back();
+            cout<<"Ostatni element stosu zostal skasowany\n"<<endl;
+        break;
+        case 3:
+            if(lista.front()==NULL){
+                cout<<"Lista Pusta"<<endl;
+            }
+            else{
+                cout<<"Elementy na stosie:"<<endl;
+            for(przez=lista.begin();przez!=lista.end();przez++){
+                cout<<*przez<<"\n";
+                }
+            }
+        break;
+        case 4:
+            exit(0);
+        break;
+        default:
+            cout<<"Prosze podac wartosc od 1 do 4\n"<<endl;
+        break;
+        }
+    }
+}
+
+int main()
+{
+    list<int> lista;
+    list<int>::iterator przez;
+    int wybor;
+    menu(wybor,lista,przez);
+    return 0;
+}
