@@ -1,0 +1,65 @@
+#include <iostream>
+#include <set>
+#include <map>
+
+using namespace std;
+
+class slownik{
+    private:
+        map<string,string> jezyk;
+        map<string,string>::iterator przez;
+    public:
+        string pl,ang;
+        int wybor;
+
+    void menu(){
+    for(;;){
+        cout<<"Menu:\n"<<"1.Dodaj slowo do slownika\n"<<"2.Znajdz szukane slowo\n"<<"3.Wyswietl slownik\n"<<"4.Wyjscie\n"<<endl;
+        cin>>wybor;
+        cout<<endl;
+        switch(wybor){
+            case 1:
+                cout<<"Podaj slowo w jezyku polskim:\n"<<endl;
+                cin>>pl;
+                cout<<"Podaj slowo w jezyku angielskim:\n"<<endl;
+                cin>>ang;
+                jezyk.insert(std::pair<string,string>(ang,pl));
+                cout<<"Slowo zostalo dodane do slownika"<<endl;
+            break;
+            case 2:
+                cout<<"Podaj slowo do wyszukania w jezyku angielskim:"<<endl;
+                cin>>ang;
+                przez = jezyk.find(ang);
+                cout<<"Slowo w jezyku angielskim oraz jego odpowiednik w jezyku polskim:\n"<<endl;
+                cout<<"Jezyk Angielski: "<<przez->first<<"\nJezyk Polski: "<<przez->second<<endl;
+            break;
+            case 3:
+                if(jezyk.empty()){
+                    cout<<"\nslownik nie posiada zadnych slow\n"<<endl;
+                }
+                else{
+                    cout<<"Slowa w slowniku: "<<endl;
+                for(przez=jezyk.begin();przez!=jezyk.end();++przez){
+                    cout<<"ANG: "<<przez->first<<"PL: "<<przez->second<<"\n";
+                    }
+                }
+            break;
+            case 4:
+                exit(0);
+            break;
+            default:
+                cout<<"Prosze podac wartosc od 1 do 4\n"<<endl;
+            break;
+                }
+            }
+    }
+};
+
+
+
+int main()
+{
+    slownik jezyki;
+    jezyki.menu();
+    return 0;
+}
